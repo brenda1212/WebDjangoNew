@@ -1,12 +1,15 @@
+import datetime
 from django.http import HttpResponse
 from django.template import Template,Context
 def saludo(request):
 
- nombre="Angelcd"
+ nombre="Angel"
+ now=datetime.datetime.now()
+
  doc_ex=open("C:/Users/sairaf/Desktop/web/WebDjangoNew/SitieWeb/SitieWeb/Plantillas/miplantilla.html")
  ptl=Template(doc_ex.read())
  doc_ex.close()
- ctx=Context({"nombre_persona":nombre})
+ ctx=Context({"nombre_persona":nombre,"momento_actual":now})
  documento=ptl.render(ctx)
  return HttpResponse(documento)
 
